@@ -5,13 +5,19 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>http://www.satgeorilievi.com/</loc>
+        <loc>{{ app.url_generator.generate('pages',{"page":"home"}) }}</loc>
         <priority>1.0</priority>
     </url>
     {% for key,value in pages %}
      <url>
-          <loc>http://www.satgeorilievi.com{{ app.url_generator.generate('pages',{"page":value.binding_path}) }}</loc>
+          <loc>{{ app.url_generator.generate('pages',{"page":value.binding_path}) }}</loc>
           <priority>0.8</priority>
      </url>
+    {% endfor %}
+    {% for i in 1..tot_pages %}
+    <url>
+        <loc>{{ app.url_generator.generate('news',{"page":i}) }}</loc>
+        <priority>0.8</priority>
+    </url>
     {% endfor %}
 </urlset>

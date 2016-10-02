@@ -22,13 +22,13 @@ class PagesControllerProvider implements ControllerProviderInterface
 
             /** @var \Kilte\Pagination\Pagination $pagination */
             $pagination = $app['pagination']($count, 1);
-            $pages = $pagination->build();
+            $tot = $pagination->totalPages();
 
-            var_dump($pages);
             return $app['twig']->render(
                 'sitemap.xml.twig',
                 array(
-                    'pages' => $app['config']['satgeoroutes']
+                    'pages' => $app['config']['satgeoroutes'],
+                    'tot_pages' => $tot
                 )
             );
         })->bind('sitemap');

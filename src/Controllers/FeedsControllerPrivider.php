@@ -101,9 +101,11 @@ class FeedsControllerProvider implements ControllerProviderInterface
      */
     public function read(Application $app, $page)
     {
+        $sql = "SELECT count(id) FROM items_satgeorilievi WHERE approved=1";
+        $count = $app['db']->fetchColumn($sql);
 
         /** @var \Kilte\Pagination\Pagination $pagination */
-        $pagination = $app['pagination'](100, $page);
+        $pagination = $app['pagination']($count, $page);
         $pages = $pagination->build();
 
         $queryBuilder = $app['db']->createQueryBuilder();
@@ -114,13 +116,21 @@ class FeedsControllerProvider implements ControllerProviderInterface
             ->where('approved = 1')
             ->orderBy('id', 'DESC')
             ->setFirstResult($page)
-            ->setMaxResults(100);
+            ->setMaxResults($app['pagination.per_page']);
 
         $news = $queryBuilder->execute()->fetchAll();
 
         if ($page > 1) {
-            $sql = "SELECT title, data FROM items_satgeorilievi WHERE approved=1 ORDER BY id DESC LIMIT :page, 1";
-            $property = $app['db']->fetchAssoc($sql, [':page' => $page]);
+            $queryBuilder = $app['db']->createQueryBuilder();
+            $queryBuilder
+                ->select('title')
+                ->from('items_satgeorilievi')
+                ->where('approved = 1')
+                ->orderBy('id', 'DESC')
+                ->setFirstResult($page)
+                ->setMaxResults(1);
+
+            $property = $queryBuilder->execute()->fetch();
             $title = $property['title'];
             $desc = substr(strip_tags($property['data']), 0, 100);
         } else {
