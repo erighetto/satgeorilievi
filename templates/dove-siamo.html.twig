@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block scripts %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+        var vestenanova = new google.maps.LatLng(45.574999, 11.226375);
+        var sede = new google.maps.LatLng(45.574999, 11.226375);
+        var marker;
+        var map;
+        var infowindow = new google.maps.InfoWindow(
+                { content: '<div style="width:400px;height:75px;"><h2>S.A.T. - Studio Associato di Topografia</h2> <p>Via Chiesa 51 - 37030 - Vestenanova (VR)</p>',
+                });
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: vestenanova
+            };
+
+            map = new google.maps.Map(document.getElementById("map_canvas"),
+                    mapOptions);
+
+            marker = new google.maps.Marker({
+                map:map,
+                draggable:true,
+                animation: google.maps.Animation.DROP,
+                position: sede,
+                title: "SAT - Studio Associato Topografia"
+            });
+            google.maps.event.addListener(marker, 'click', toggleBounce);
+        }
+
+        function toggleBounce() {
+
+            if (marker.getAnimation() != null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+                infowindow.open(map,marker);
+            }
+        }
+
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h2>Dove Siamo</h2>
+
+    <div id="map_canvas" style="width: 600px; height: 400px;">map div</div>
+{% endblock %}

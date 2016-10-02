@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2>Notizie e curiosit&agrave; su<br /> laser scanner 3d Leica ScanStation C10</h2>
+
+    <ul id="rassegnastampa">
+        {% for row in news %}
+            <li>
+                <h4>{{ row.title }}</h4>
+                <span class="posted">{{ row.posted }}</span>
+                <p>{{ row.data|raw }}</p>
+                <p><a href="{{ row.link|raw }}" rel="nofollow" class="blank">leggi tutto</a></p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% for number, position in pages %}
+                {% if position == 'first' %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ app.url_generator.generate('news',{"page":number}) }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                {% elseif position == 'less' or position == 'more' %}
+                    <li class="page-item">...</li>
+                {% elseif position == 'previous' or position == 'next' %}
+                    <li class="page-item"><a href="{{ app.url_generator.generate('news',{"page":number}) }}">{{ number }}</a></li>
+                {% elseif position == 'current' %}
+                    <li class="page-item">{{ number }}</li>
+                {% elseif position == 'last' %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ app.url_generator.generate('news',{"page":number}) }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    
+{% endblock %}

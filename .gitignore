@@ -1,0 +1,5 @@
+vendor
+.sass-cache
+config/settings.yml
+.idea
+cache/*

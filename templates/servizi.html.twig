@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <img src="{{ asset('dioptra.jpg', 'images') }}" class="bordered pull-sm-right">
+
+    <h2>Servizi</h2>
+
+    <ul>
+        {% for key,value in app.config.satgeoservices %}
+            <li>
+                <div class="feature">
+                    <a href="{{ app.url_generator.generate('services',{"page":value.binding_path}) }}" title="{{ value.plural }}">{{ value.plural }}</a>
+                    <div class="show-feature"><img src="{{ asset(value.image, 'images') }}" alt="{{ value.menu }}" title="{{ value.menu }}">
+                        <br/>progettazione edile
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        <h2>Dotazione dello studio</h2>
+        <ul>
+            <li>2 pc desktop</li>
+            <li>2 pc notebook</li>
+            <li>plotter HP formato A0</li>
+            <li>stampante laser a colori multifunzione sharp</li>
+            <li>stampante a colori a getto d'inchiostro HP</li>
+            <li>2 misuratori Disto</li>
+            <li><a href="{{ asset('strumenti/stazione totale robotizzata TRIMBLE 5601_2.jpg', 'images') }}"
+                   class="preview" alt="stazione totale robotizzata TRIMBLE 5601"
+                   title="stazione totale robotizzata TRIMBLE 5601">stazione totale robotizzata TRIMBLE 5601</a></li>
+            <li><a href="{{ asset('strumenti/Base GPS TRIMBLE 5700_2.jpg', 'images') }}" class="preview"
+                   alt="Base GPS TRIMBLE 5700" title="Base GPS TRIMBLE 5700">Base GPS TRIMBLE 5700</a></li>
+            <li><a href="{{ asset('strumenti/Rover GPS TRIMBLE R8 GNSS_2.jpg', 'images') }}" class="preview"
+                   alt="Rover GPS TRIMBLE R8 GNSS" title="Rover GPS TRIMBLE R8 GNSS">Rover GPS TRIMBLE R8 GNSS</a></li>
+            <li><a href="{{ asset('strumenti/Antenna Base fissa GPS_2.jpg', 'images') }}" class="preview"
+                   alt="Base fissa GPS georeferenziata" title="Base fissa GPS georeferenziata">Base fissa GPS
+                    georeferenziata</a></li>
+            <li><a href="{{ asset('strumenti/Laser-scanner-Leica-ScanStation-C10.jpg', 'images') }}" class="preview"
+                   alt="Laser scanner Leica ScanStation C10" title="Laser scanner Leica ScanStation C10">Laser scanner
+                    Leica ScanStation C10</a></li>
+        </ul>
+    </div>
+
+{% endblock %}
