@@ -43,10 +43,10 @@ $app->register(new DF\Silex\Provider\YamlConfigServiceProvider(ROOT . '/config/r
 
 $app->register(new DF\Silex\Provider\YamlConfigServiceProvider(ROOT . '/config/services.yml'));
 
-$app->mount('/', new Satgeorilievi\Controllers\PagesControllerProvider());
-
 $app->mount('/servizi', new Satgeorilievi\Controllers\ServicesControllerProvider());
 
 $app->mount('/news', new Satgeorilievi\Controllers\FeedsControllerProvider());
+
+$app->mount('/', new Satgeorilievi\Controllers\PagesControllerProvider());
 
 $app->run();

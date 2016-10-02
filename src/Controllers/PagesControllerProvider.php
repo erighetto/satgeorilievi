@@ -13,6 +13,27 @@ class PagesControllerProvider implements ControllerProviderInterface
         $controllers = $app['controllers_factory'];
 
         /**
+         *  Sitemap
+         */
+        $controllers->get('/sitemap.xml', function (Application $app) {
+
+            $sql = "SELECT count(id) FROM items_satgeorilievi WHERE approved=1";
+            $count = $app['db']->fetchColumn($sql);
+
+            /** @var \Kilte\Pagination\Pagination $pagination */
+            $pagination = $app['pagination']($count, 1);
+            $pages = $pagination->build();
+
+            var_dump($pages);
+            return $app['twig']->render(
+                'sitemap.xml.twig',
+                array(
+                    'pages' => $app['config']['satgeoroutes']
+                )
+            );
+        })->bind('sitemap');
+
+        /**
          *  pagine
          */
         $controllers->get('/{page}', function (Application $app, $page) {
@@ -27,7 +48,6 @@ class PagesControllerProvider implements ControllerProviderInterface
                 )
             );
         })->value('page','home')->bind('pages');
-
 
         return $controllers;
     }
