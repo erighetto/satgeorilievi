@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ed28364f069faa6e9bf38b1c0063567",
-    "content-hash": "48af42c6557acdbda515f4a1ff544434",
+    "hash": "00e9b141ef96968106aae81a9bf24b08",
+    "content-hash": "8cad19bc21e541ee1d93f1d243c451b3",
     "packages": [
         {
             "name": "amstaffix/pagination",

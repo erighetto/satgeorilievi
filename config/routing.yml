@@ -20,7 +20,7 @@ satgeoroutes:
     binding_path: 'dove-siamo'
     menu: 'Dove siamo'
   contatti:
-      title: 'Contatti'
-      description: 'Contatti. Indirizzo mail. Vestenanova, Verona, Veneto'
-      binding_path: 'contatti'
-      menu: 'Contatti'
+    title: 'Contatti'
+    description: 'Contatti. Indirizzo mail. Vestenanova, Verona, Veneto'
+    binding_path: 'contatti'
+    menu: 'Contatti'
