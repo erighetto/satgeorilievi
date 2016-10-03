@@ -4,14 +4,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <url>
-        <loc>{{ app.url_generator.generate('pages',{"page":"home"}) }}</loc>
-        <priority>1.0</priority>
-    </url>
-    {% for key,value in pages %}
+    {% for key,value in pages %}{% if key == "home" %}{% set priority = '1.0' %}{% else %}{% set priority = '0.8' %}{% endif %}
      <url>
-          <loc>{{ app.url_generator.generate('pages',{"page":value.binding_path}) }}</loc>
-          <priority>0.8</priority>
+         <loc>{{ app.url_generator.generate('pages',{"page":value.binding_path}) }}</loc>
+         <priority>{{ priority }}</priority>
      </url>
     {% endfor %}
     {% for i in 1..tot_pages %}

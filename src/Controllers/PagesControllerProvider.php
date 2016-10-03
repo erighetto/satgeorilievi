@@ -45,6 +45,7 @@ class PagesControllerProvider implements ControllerProviderInterface
             );
         })->bind('sitemap');
 
+
         /**
          *  pagine
          */
