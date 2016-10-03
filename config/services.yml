@@ -1,21 +1,21 @@
 satgeoservices:
   rilievi-topografici:
       title: 'Rilievi con laser scanner, rilievo celerimetrico, rilievi topografici, rilievi gps'
-      description: 'Rilievo con laser scanner 3D, rilievi gps, rilievo celerimetrico, rilievi topografici'
+      description: 'Eseguiamo rilievi gps, rilievo celerimetrico, rilievo con laser scanner 3D, rilievi topografici in veneto e in tutta Italia'
       binding_path: 'rilievi-topografici'
       menu: 'rilievo topografico'
       plural: 'rilievi topografici'
       image: 'rilievi-topografici-hover.jpg'
   piani-quotati:
-      title: 'Rilievi con laser scanner, rilievo celerimetrico, rilievi topografici, rilievi gps'
-      description: 'Rilievo con laser scanner 3D, rilievi gps, rilievo celerimetrico, rilievi topografici'
+      title: 'Piani quotati per miglioramenti fondiari'
+      description: 'Realizzazione di piani quotati per miglioramenti fondiari'
       binding_path: 'piani-quotati'
       menu: 'piano quotato'
       plural: 'piani quotati'
       image: 'piano-quotato-hover.jpg'
   frazionamenti-lottizzazioni:
-      title: 'Rilievi con laser scanner, rilievo celerimetrico, rilievi topografici, rilievi gps'
-      description: 'Rilievo con laser scanner 3D, rilievi gps, rilievo celerimetrico, rilievi topografici'
+      title: 'Frazionamento e tracciamento di strade e lotti'
+      description: 'Frazionamenti e tracciamenti per lottizzazioni e urbanizzazioni'
       binding_path: 'frazionamenti-lottizzazioni'
       menu: 'accatastamenti e riconfinazioni'
       plural: 'frazionamento e tracciamento'
@@ -28,8 +28,8 @@ satgeoservices:
       plural: 'accatastamenti e riconfinazioni'
       image: 'accatastamento-riconfinazione-hover.jpg'
   progettazione-edile:
-      title: 'Rilievi con laser scanner, rilievo celerimetrico, rilievi topografici, rilievi gps'
-      description: 'Rilievo con laser scanner 3D, rilievi gps, rilievo celerimetrico, rilievi topografici'
+      title: 'Progettazione Edile'
+      description: 'Progettazione edile, realizzazione progetti per edilizia privata e industriale'
       binding_path: 'progettazione-edile'
       menu: 'progettazione edile'
       plural: 'progettazione edile'

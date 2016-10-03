@@ -3,20 +3,7 @@
 
     <img src="{{ asset('dioptra.jpg', 'images') }}" class="bordered pull-sm-right">
 
-    <h2>Servizi</h2>
-
-    <ul>
-        {% for key,value in app.config.satgeoservices %}
-            <li>
-                <div class="feature">
-                    <a href="{{ app.url_generator.generate('services',{"page":value.binding_path}) }}" title="{{ value.plural }}">{{ value.plural }}</a>
-                    <div class="show-feature"><img src="{{ asset(value.image, 'images') }}" alt="{{ value.menu }}" title="{{ value.menu }}">
-                        <br/>progettazione edile
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+    {% include "menu.servizi.html.twig" %}
 
     <div>
         <h2>Dotazione dello studio</h2>

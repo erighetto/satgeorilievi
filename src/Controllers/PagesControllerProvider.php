@@ -26,7 +26,7 @@ class PagesControllerProvider implements ControllerProviderInterface
          */
         $controllers->get('/sitemap.xml', function (Application $app) {
 
-            $sql = "SELECT count(id) FROM items_satgeorilievi WHERE approved=1";
+            $sql = "SELECT count(id) FROM items_satgeorilievi WHERE approved = 1";
             $count = $app['db']->fetchColumn($sql);
 
             /** @var \Kilte\Pagination\Pagination $pagination */

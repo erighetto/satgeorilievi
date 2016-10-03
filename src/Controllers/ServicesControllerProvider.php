@@ -25,13 +25,21 @@ class ServicesControllerProvider implements ControllerProviderInterface
          */
         $controllers->get('/{page}', function (Application $app, $page) {
 
-            if ($page == "") $page = 'home';
+            if ($page == "rilievi-laser-scanner-3d") {
+                $template = $page;
+                $title = "Rilievi Topografici  con laser scanner 3d Leica ScanStation C10";
+                $description = "Rilievi Topografici con laser scanner 3d Leica ScanStation C10 eseguiti da";
+            } else {
+                $template = $app['config']['satgeoservices'][$page]['binding_path'];
+                $title = $app['config']['satgeoservices'][$page]['title'];
+                $description = $app['config']['satgeoservices'][$page]['description'];
+            }
 
             return $app['twig']->render(
-                $app['config']['satgeoservices'][$page]['binding_path'] . '.html.twig',
+                 $template . '.html.twig',
                 array(
-                    'title' => $app['config']['satgeoservices'][$page]['title'],
-                    'description' => $app['config']['satgeoservices'][$page]['description']
+                    'title' => $title,
+                    'description' => $description
                 )
             );
         })->value('page')->bind('services');

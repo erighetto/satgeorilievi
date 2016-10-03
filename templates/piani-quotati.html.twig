@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2>Piani quotati per miglioramenti fondiari</h2>
+
+    <p>Clicca sulle anteprime per visualizzare alcuni esempi di piani quotati per miglioramenti fondiari</p>
+    <p>
+        <a href="{{ asset('Es_piano_quotato_1.pdf', 'images') }}"
+           title="Realizzazione di piani quotati per miglioramenti fondiari"><img
+                    src="{{ asset('piano-quotato-1.jpg', 'images') }}" class="bordered"
+                    alt="Realizzazione di piani quotati per miglioramenti fondiari"
+                    title="Realizzazione di piani quotati per miglioramenti fondiari"/></a>
+        <a href="{{ asset('Es_piano_quotato_2.pdf', 'images') }}"
+           title="Realizzazione di piani quotati per miglioramenti fondiari"><img
+                    src="{{ asset('piano-quotato-2.jpg', 'images') }}" class="bordered"
+                    alt="Realizzazione di piani quotati per miglioramenti fondiari"
+                    title="Realizzazione di piani quotati per miglioramenti fondiari"/></a>
+    </p>
+
+    <p>Porta il cursore del mouse sopra l'immagine per visualizzare un esempio di piano quotato</p>
+    <p><img src="{{ asset('quotato1_off.jpg', 'images') }}" class="rollover bordered"
+            title="Realizzazione di piani quotati per miglioramenti fondiari"
+            alt="Realizzazione di piani quotati per miglioramenti fondiari"></p>
+
+    {% include "menu.servizi.html.twig" %}
+
+{% endblock %}

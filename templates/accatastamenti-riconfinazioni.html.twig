@@ -11,19 +11,6 @@
     <a href="{{ asset('Es_inserimento_catastale.pdf', 'images') }}" title="Inserimento catastale">
         <img src="{{ asset('inserimento-catastale.jpg', 'images') }}" class="bordered" title="Inserimento catastale" alt="Inserimento catastale" /></a>
 
-    <h2>Servizi</h2>
-
-    <ul>
-        {% for key,value in app.config.satgeoservices %}
-            <li>
-                <div class="feature">
-                    <a href="{{ app.url_generator.generate('services',{"page":value.binding_path}) }}" title="{{ value.plural }}">{{ value.plural }}</a>
-                    <div class="show-feature"><img src="{{ asset(value.image, 'images') }}" alt="{{ value.menu }}" title="{{ value.menu }}">
-                        <br/>progettazione edile
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+    {% include "menu.servizi.html.twig" %}
 
 {% endblock %}

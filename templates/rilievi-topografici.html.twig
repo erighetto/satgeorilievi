@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2>Rilievi Topografici</h2>
+    <p> Lo studio esegue <strong>rilievi planimetrici</strong> o <strong>plano-altimetrici</strong> di:
+    <ul>
+        <li>
+            terreni, o porzioni di territorio
+        </li>
+        <li>
+            strade,tracciati stradali
+        </li>
+        <li>
+            tracciati ferroviari,
+        </li>
+        <li>
+            percorsi di torrenti, fiumi e argini, dighe
+        </li>
+        <li>
+            fabbricati o complessi industriali, agricoli o commerciali
+        </li>
+    </ul></p>
+    <div class="clearer"></div>
+    <p>Il rilievo topografi è eseguito con l’ausilio di strumenti elettronici o satellitari quali i teodoliti con
+        distanziometro integrati, sistemi GPS o scanning mediante laser 3d. Ci approcciamo alla topografia con strumenti
+        ad alta precisione.</p>
+    <p>Grazie alle nostre esperienze ed al know-how acquisito, sappiamo ottimizzare le fasi di acquisizione dei dati
+        territoriali, garantendo rapidità e precisione nella determinazione delle coordinate rilevate.</p>
+
+    <div class="row">
+        <div class="col-sm-4 ambito">
+            <h3>Rilievi con GPS</h3>
+            <img src="{{ asset('rilievo-gps.jpg', 'images') }}" title="Rilievo GPS" alt="Rilievo GPS" class="img-fluid" />
+            <p>Eseguiamo il rilievo GPS con rover e base fissa georeferenziata presso la nostra sede per incarichi fino a 20
+                km da Bolca (VR).
+                Effettuiamo rilievi topografici GPS in tutto il Veneto appoggiandoci a basi fisse georeferenziate di nostri
+                collaboratori.
+                <acronym title="modalità statico, statico - veloce, pseudo statico e cinematico">Diverse metodologie di
+                    rilievo</acronym>, per ogni specifica esigenza, permettono di utilizzare il sistema GPS in modo molto
+                versatile.</p>
+        </div>
+        <div class="col-sm-4 ambito">
+            <h3>Rilievi celerimetrici</h3>
+            <img src="{{ asset('rilievo-celerimetrico.jpg', 'images') }}" title="Rilievo Celerimetrico"
+                 alt="Rilievo Celerimetrico" class="img-fluid" />
+            <p>Svolgiamo attività di rilievo topografico classico per la determinazione plano-altimetrica dei punti di
+                dettaglio completo del terreno, comunemente detta anche <strong>rilievo celerimetrico</strong>. Grazie
+                all’introduzione di strumenti di misura sempre più sofisticati è possibile determinare tutti i punti esterni
+                di contorno dei prospetti, nonché i punti quota utili per individuare le linee di sezione.</p>
+        </div>
+        <div class="col-sm-4 ambito">
+            <h3>Rilievi con laser scanner</h3>
+            <img src="{{ asset('rilievo-laser-scanner-leica-scanstation-c10.jpg', 'images') }}"
+                 title="Rilievi con laser scanner 3D Leica ScanStation C10"
+                 alt="Rilievi con laser scanner 3D Leica ScanStation C10" class="img-fluid"/>
+            <p>Grazie all'innovativo strumento <a
+                        href="{{ app.url_generator.generate('services',{"page":"rilievi-laser-scanner-3d"}) }}"
+                        title="Laser Scanner 3D">LEICA SCANSTATION C10</a> otteniamo il rilevamento di modelli
+                tridimensionali di oggetti a scale e risoluzioni differenti. La scansione laser è una soluzione
+                eccezionalmente versatile per l’acquisizione di grandi quantità di dati con tempi di rilievo sensibilmente
+                ridotti, mantenendo sempre altissime precisioni.</p>
+        </div>
+    </div>
+
+
+    {% include "menu.servizi.html.twig" %}
+
+{% endblock %}

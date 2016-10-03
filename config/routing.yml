@@ -16,7 +16,7 @@ satgeoroutes:
     menu: 'Servizi'
   dove-siamo:
     title: 'Dove siamo'
-    description: 'S.A.T. - Studio Associato di Topografia, dove siamo: Vestenanova, Verona, Veneto'
+    description: 'Dove siamo: Vestenanova, Verona, Veneto'
     binding_path: 'dove-siamo'
     menu: 'Dove siamo'
   contatti:
