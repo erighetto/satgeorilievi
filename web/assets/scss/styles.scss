@@ -173,6 +173,9 @@ nav {
     &#rassegnastampa {
       width: 100%;
     }
+    &.pagination {
+      padding-left: inherit;
+    }
   }
 }
 

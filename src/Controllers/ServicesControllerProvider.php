@@ -5,8 +5,16 @@ namespace Satgeorilievi\Controllers;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 
+/**
+ * Class ServicesControllerProvider
+ * @package Satgeorilievi\Controllers
+ */
 class ServicesControllerProvider implements ControllerProviderInterface
 {
+    /**
+     * @param Application $app
+     * @return mixed
+     */
     public function connect(Application $app)
     {
         // creates a new controller based on the default route

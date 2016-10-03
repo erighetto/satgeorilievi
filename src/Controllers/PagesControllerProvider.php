@@ -4,9 +4,18 @@ namespace Satgeorilievi\Controllers;
 
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class PagesControllerProvider
+ * @package Satgeorilievi\Controllers
+ */
 class PagesControllerProvider implements ControllerProviderInterface
 {
+    /**
+     * @param Application $app
+     * @return mixed
+     */
     public function connect(Application $app)
     {
         // creates a new controller based on the default route
@@ -24,12 +33,15 @@ class PagesControllerProvider implements ControllerProviderInterface
             $pagination = $app['pagination']($count, 1);
             $tot = $pagination->totalPages();
 
-            return $app['twig']->render(
+            return new Response($app['twig']->render(
                 'sitemap.xml.twig',
                 array(
                     'pages' => $app['config']['satgeoroutes'],
                     'tot_pages' => $tot
                 )
+            ),
+                200,
+                array('Content-Type' => 'application/xml')
             );
         })->bind('sitemap');
 
@@ -47,7 +59,7 @@ class PagesControllerProvider implements ControllerProviderInterface
                     'description' => $app['config']['satgeoroutes'][$page]['description']
                 )
             );
-        })->value('page','home')->bind('pages');
+        })->value('page', 'home')->bind('pages');
 
         return $controllers;
     }
