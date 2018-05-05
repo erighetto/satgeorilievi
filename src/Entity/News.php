@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Items
+ * News
  *
- * @ORM\Table(name="items")
+ * @ORM\Table(name="news")
  * @ORM\Entity
  */
-class Items
+class News
 {
     /**
      * @var int
@@ -24,28 +24,28 @@ class Items
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="link", type="text", length=16777215, nullable=false)
      */
     private $link;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="title", type="text", length=16777215, nullable=false)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="data", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="data", type="text", length=16777215, nullable=false)
      */
     private $data;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="posted", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="posted", type="text", length=16777215, nullable=false)
      */
     private $posted;
 

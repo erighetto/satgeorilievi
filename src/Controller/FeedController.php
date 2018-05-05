@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Items;
+use App\Entity\News;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SimplePie;
@@ -46,14 +46,14 @@ class FeedController extends Controller
 
             foreach ($feed->get_items() as $item):
 
-                $repository = $this->getDoctrine()->getRepository(Items::class);
+                $repository = $this->getDoctrine()->getRepository(News::class);
                 $stored = $repository->findOneBy(['link' => $item->get_permalink()]);
 
                 if (!$stored) {
 
                     $entityManager = $this->getDoctrine()->getManager();
 
-                    $db_record = new Items();
+                    $db_record = new News();
                     $db_record->setLink($item->get_permalink());
                     $db_record->setTitle($item->get_title());
                     $db_record->setData($this->wordCleanup($item->get_content(), $item->get_title()));
@@ -70,8 +70,7 @@ class FeedController extends Controller
         $mtime = explode(' ', microtime());
 
         return $this->render(
-            'update.html.twig', [
-            'controller_name' => 'FeedController',
+            'feed/update.html.twig', [
                 'message' => 'Page processed in ' . round($mtime[0] + $mtime[1] - $starttime, 3) . ' seconds.'
         ]);
     }

@@ -1,6 +1,7 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
+
 {% block body %}
-<h2>Notizie e curiosit&agrave; su<br /> laser scanner 3d Leica ScanStation C10</h2>
+    <h2>Notizie e curiosit&agrave; su<br /> laser scanner 3d Leica ScanStation C10</h2>
 
     <ul id="rassegnastampa">
         {% for row in news %}
@@ -40,5 +41,5 @@
             {% endfor %}
         </ul>
     </nav>
-    
+
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block body %}
     <h2>Accatastamenti e riconfinazioni</h2>
 
@@ -11,6 +11,6 @@
     <a href="{{ asset('Es_inserimento_catastale.pdf', 'images') }}" title="Inserimento catastale">
         <img src="{{ asset('inserimento-catastale.jpg', 'images') }}" class="bordered" title="Inserimento catastale" alt="Inserimento catastale" /></a>
 
-    {% include "../menu.servizi.html.twig" %}
+    {% include "menu.servizi.html.twig" %}
 
 {% endblock %}
