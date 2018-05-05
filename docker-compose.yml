@@ -1,0 +1,41 @@
+version: '2'
+services:
+
+  symfony-webapp:
+    image: erighetto/drupal-dev:latest
+    ports:
+      - "80:80"
+    links:
+      - pma
+    volumes:
+      - "./:/var/www/html:cached"
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql-server
+      PMA_USER: silex_usr
+      PMA_PASSWORD: silex_pwd
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    ports:
+      - "8080:80"
+
+  mysql-server:
+    image: mariadb:latest
+    environment:
+     MYSQL_ROOT_PASSWORD:  root
+     MYSQL_DATABASE: satgeorilievi
+     MYSQL_USER: silex_usr
+     MYSQL_PASSWORD: silex_pwd
+    volumes_from:
+      - dbdata
+    ports:
+      - "3306:3306"
+
+  dbdata:
+    image: tianon/true
+    volumes:
+      - "/var/lib/mysql"

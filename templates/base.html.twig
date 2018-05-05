@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ title }} - S.A.T. | Studio Associato di Topografia</title>
     <meta name="description" content="{{ description }} - S.A.T. | Studio Associato di Topografia">
-    <link href="{{ asset('styles.css', 'css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     {% block scripts %}{% endblock %}
@@ -17,16 +17,15 @@
 <body>
 
 <div class="container">
-    <nav class="navbar navbar-static-top">
-        <a class="navbar-brand" href="{{ app.url_generator.generate('pages',{"page":"home"}) }}"
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{{ path('default') }}"
            title="{{ title }} - S.A.T. | Studio Associato di Topografia">SAT</a>
-        <ul class="nav navbar-nav">
-            {% for key,value in app.config.satgeoroutes %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ app.url_generator.generate('pages',{"page":value.binding_path}) }}" title="{{ value.description }}">{{ value.menu }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        {{ navigation|raw }}
+        </div>
     </nav>
     <!-- BEGIN BANNER -->
     <div id="banner">
@@ -84,15 +83,11 @@
 <!-- BEGIN FOOTER -->
 <div id="footer" class="container">
     <div class="clearfix">
+        {{ navigation|raw }}
     <ul class="list-inline">
-        {% for key,value in app.config.satgeoroutes %}
-            <li>
-                <a class="nav-link" href="{{ app.url_generator.generate('pages',{"page":value.binding_path}) }}" title="{{ value.description }}">{{ value.menu }}</a>
-            </li>
-        {% endfor %}
-        <li><a class="nav-link" href="{{ app.url_generator.generate('news') }}" title="Notizie legate al laser scanner 3d Leica ScanStation C10">News</a></li>
-        <li><a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" class="blank" title="Rilevazioni con laserscanner 3D"><img src="{{ asset('Facebook-Icon.png', 'images') }}"  style="padding-top: 4px;" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" /></a></li>
-        <li><a class="nav-link" href="https://plus.google.com/u/0/b/113648535618383673909/" title="rilievo con laserscanner" class="blank"><img src="{{ asset('googleplus.png', 'images') }}" style="padding-top: 6px;" alt="Rilievo laserscanner 3D" title="Rilievo laserscanner 3D" /></a></li>
+        <li><a class="nav-link" href="{{ path('items_index') }}" title="Notizie legate al laser scanner 3d Leica ScanStation C10">News</a></li>
+        <li><a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" title="Rilevazioni con laserscanner 3D"><img src="{{ asset('build/img/Facebook-Icon.png') }}"  style="padding-top: 4px;" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" /></a></li>
+        <li><a class="nav-link" href="https://plus.google.com/u/0/b/113648535618383673909/" title="rilievo con laserscanner"><img src="{{ asset('build/img/googleplus.png') }}" style="padding-top: 6px;" alt="Rilievo laserscanner 3D" title="Rilievo laserscanner 3D" /></a></li>
     </ul>
     </div>
     <div class="clearfix">
@@ -103,15 +98,9 @@
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"
-        integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
-        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"
-        integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD"
-        crossorigin="anonymous"></script>
-<script src="{{ asset('scripts.js', 'js') }}" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{ asset('build/app.js') }}" type="text/javascript"></script>
 </body>
 </html>
