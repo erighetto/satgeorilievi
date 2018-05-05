@@ -17,7 +17,7 @@ class NewsController extends Controller
     /**
      * @Route("/", name="news_index", methods="GET")
      */
-    public function index(): Response
+    public function indexAction(): Response
     {
         $news = $this->getDoctrine()
             ->getRepository(News::class)
@@ -73,7 +73,7 @@ class NewsController extends Controller
     /**
      * @Route("/new", name="news_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function newAction(Request $request): Response
     {
         $news = new News();
         $form = $this->createForm(NewsType::class, $news);
@@ -96,7 +96,7 @@ class NewsController extends Controller
     /**
      * @Route("/{id}", name="news_show", methods="GET")
      */
-    public function show(News $news): Response
+    public function showAction(News $news): Response
     {
         return $this->render('news/show.html.twig', ['news' => $news]);
     }
@@ -104,7 +104,7 @@ class NewsController extends Controller
     /**
      * @Route("/{id}/edit", name="news_edit", methods="GET|POST")
      */
-    public function edit(Request $request, News $news): Response
+    public function editAction(Request $request, News $news): Response
     {
         $form = $this->createForm(NewsType::class, $news);
         $form->handleRequest($request);
@@ -124,7 +124,7 @@ class NewsController extends Controller
     /**
      * @Route("/{id}", name="news_delete", methods="DELETE")
      */
-    public function delete(Request $request, News $news): Response
+    public function deleteAction(Request $request, News $news): Response
     {
         if ($this->isCsrfTokenValid('delete'.$news->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();

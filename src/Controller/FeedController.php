@@ -12,7 +12,7 @@ class FeedController extends Controller
     /**
      * @Route("/feed/update", name="feed_update")
      */
-    public function update()
+    public function updateAction()
     {
 
         // Start counting time for the page load

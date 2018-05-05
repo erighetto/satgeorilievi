@@ -28,7 +28,7 @@ class PagesController extends Controller
     /**
      * @Route("/", name="home", options={"sitemap" = true})
      */
-    public function home()
+    public function homeAction()
     {
         return $this->render('pages/home.html.twig', [
             'title' => 'Rilievi con laser scanner, rilievo celerimetrico, rilievi topografici, rilievi gps',
@@ -40,7 +40,7 @@ class PagesController extends Controller
     /**
      * @Route("/chi-siamo", name="chi_siamo", options={"sitemap" = {"priority" = 0.7, "changefreq" = "weekly" }})
      */
-    public function chiSiamo()
+    public function chiSiamoAction()
     {
         return $this->render('pages/chi-siamo.html.twig', [
             'title' => 'Chi siamo',
@@ -52,7 +52,7 @@ class PagesController extends Controller
     /**
      * @Route("/servizi", name="servizi", options={"sitemap" = {"priority" = 0.7, "changefreq" = "weekly" }})
      */
-    public function servizi()
+    public function serviziAction()
     {
         return $this->render('pages/servizi.html.twig', [
             'title' => 'Rilievo gps, rilievo laser scanner, rilievi topografici',
@@ -64,7 +64,7 @@ class PagesController extends Controller
     /**
      * @Route("/dove-siamo", name="dove_siamo", options={"sitemap" = {"priority" = 0.7, "changefreq" = "weekly" }})
      */
-    public function doveSiamo()
+    public function doveSiamoAction()
     {
         return $this->render('pages/dove-siamo.html.twig', [
             'title' => 'Rilievo gps, rilievo laser scanner, rilievi topografici',
@@ -76,7 +76,7 @@ class PagesController extends Controller
     /**
      * @Route("/contatti", name="contatti", options={"sitemap" = {"priority" = 0.7, "changefreq" = "weekly" }})
      */
-    public function contatti()
+    public function contattiAction()
     {
         return $this->render('pages/contatti.html.twig', [
             'title' => 'Contatti',

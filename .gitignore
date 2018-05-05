@@ -1,6 +1,3 @@
-vendor
-.sass-cache
-config/settings.yml
 .idea
 
 ###> symfony/framework-bundle ###

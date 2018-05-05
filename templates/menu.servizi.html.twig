@@ -1,12 +1,12 @@
 <h2>Servizi</h2>
 
 <ul>
-    {% for key,value in app.config.satgeoservices %}
+    {% for key,value in satgeoexpertises.getItems %}
         <li>
             <div class="feature">
-                <a href="{{ app.url_generator.generate('services',{"page":value.binding_path}) }}" title="{{ value.plural }}">{{ value.plural }}</a>
-                <div class="show-feature"><img src="{{ asset(value.image, 'images') }}" alt="{{ value.menu }}" title="{{ value.menu }}">
-                    <br/>progettazione edile
+                <a href="{{ path(value.binding_path) }}" title="{{ value.plural }}">{{ value.plural }}</a>
+                <div class="show-feature"><img src="{{ asset(value.image) }}" alt="{{ value.menu }}" title="{{ value.menu }}">
+                    <br/>{{ value.title }}
                 </div>
             </div>
         </li>
