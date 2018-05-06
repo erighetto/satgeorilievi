@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+
+{% block head_scripts %}
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
 
     <img src="{{ asset('build/static/dioptra.jpg') }}" class="bordered pull-sm-right">
@@ -30,4 +35,8 @@
         </ul>
     </div>
 
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}

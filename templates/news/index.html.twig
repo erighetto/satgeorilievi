@@ -19,7 +19,7 @@
             {% for number, position in pages %}
                 {% if position == 'first' %}
                     <li class="page-item">
-                        <a class="page-link" href="{{ app.url_generator.generate('news',{"page":number}) }}" aria-label="Previous">
+                        <a class="page-link" href="{{ path('news_index',{"page":number}) }}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
@@ -27,12 +27,12 @@
                 {% elseif position == 'less' or position == 'more' %}
                     <li class="page-item"><span class="page-link">...</span></li>
                 {% elseif position == 'previous' or position == 'next' %}
-                    <li class="page-item"><a class="page-link" href="{{ app.url_generator.generate('news',{"page":number}) }}">{{ number }}</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ path('news_index',{"page":number}) }}">{{ number }}</a></li>
                 {% elseif position == 'current' %}
                     <li class="page-item  active"><span class="page-link">{{ number }}</span> <span class="sr-only">(current)</span></li>
                 {% elseif position == 'last' %}
                     <li class="page-item">
-                        <a class="page-link" href="{{ app.url_generator.generate('news',{"page":number}) }}" aria-label="Next">
+                        <a class="page-link" href="{{ path('news_index',{"page":number}) }}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>

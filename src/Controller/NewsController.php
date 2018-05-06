@@ -28,29 +28,18 @@ class NewsController extends Controller
         $page = $request->get('page');
 
         /** @var \Kilte\Pagination\Pagination $pagination */
-        $pagination = new Pagination($count, 0, 30);
+        $pagination = new Pagination($count, 0, 10);
         $pages = $pagination->build();
 
         $news = $repository->paginateNews($page);
 
         if ($page > 1) {
-            $queryBuilder = $app['db']->createQueryBuilder();
-            $queryBuilder
-                ->select('title')
-                ->from('items_satgeorilievi')
-                ->where('approved = 1')
-                ->orderBy('id', 'DESC')
-                ->setFirstResult($page)
-                ->setMaxResults(1);
-
-            $property = $queryBuilder->execute()->fetch();
-            $title = $property['title'];
-            $desc = substr(strip_tags($property['data']), 0, 100);
+            $title = $news[0]['title'];
+            $desc = substr(strip_tags($news[0]['data']), 0, 100);
         } else {
             $title = "Notizie legate al laser scanner 3d Leica ScanStation C10";
             $desc = "SAT Georilievi seleziona le migliori notizie su Laser Scanning 3D";
         }
-
 
         return $this->render('news/index.html.twig', [
             'title' => $title,

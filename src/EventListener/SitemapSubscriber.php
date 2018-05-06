@@ -25,7 +25,7 @@ class SitemapSubscriber implements EventSubscriberInterface
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
-     * @param ManagerRegistry       $doctrine
+     * @param ManagerRegistry $doctrine
      */
     public function __construct(UrlGeneratorInterface $urlGenerator, ManagerRegistry $doctrine)
     {
@@ -48,7 +48,7 @@ class SitemapSubscriber implements EventSubscriberInterface
      */
     public function populate(SitemapPopulateEvent $event): void
     {
-        $this->registerBlogPostsUrls($event->getUrlContainer());
+        $this->registerNewsUrls($event->getUrlContainer());
     }
 
     /**
@@ -58,7 +58,7 @@ class SitemapSubscriber implements EventSubscriberInterface
     {
         $posts = $this->doctrine->getRepository(News::class)->countAllApproved();
 
-        $pagination = new Pagination(count($posts), 0, 30);
+        $pagination = new Pagination(count($posts), 0, 10);
 
         for ($i = 1; $i <= $pagination->totalPages(); $i++) {
 
@@ -74,4 +74,5 @@ class SitemapSubscriber implements EventSubscriberInterface
             );
         }
     }
+
 }

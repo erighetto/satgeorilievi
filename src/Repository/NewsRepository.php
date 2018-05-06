@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\News;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class NewsRepository extends ServiceEntityRepository
@@ -14,28 +15,34 @@ class NewsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return News[]
+     * @return int
      */
-    public function countAllApproved(): array
+    public function countAllApproved(): int
     {
-        $qb = $this->createQueryBuilder('n')
-            ->select('count(id)')
-            ->where('approved=1')
-            ->getQuery();
+        try {
+            $tot = $this->createQueryBuilder('n')
+                ->select('count(n.id)')
+                ->where('n.approved = 1')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+            $tot = 0;
+        }
 
-        return $qb->execute();
+        return $tot;
     }
 
     /**
      * @param $page
      * @return array
      */
-    public function paginateNews($page): array {
+    public function paginateNews($page): array
+    {
 
         $qb = $this->createQueryBuilder('n')
-            ->select('title', 'posted', 'data', 'link')
-            ->where('approved = 1')
-            ->orderBy('id', 'DESC')
+            ->select('n.title', 'n.posted', 'n.data', 'n.link')
+            ->where('n.approved = 1')
+            ->orderBy('n.id', 'DESC')
             ->setFirstResult($page)
             ->setMaxResults(30)
             ->getQuery();
