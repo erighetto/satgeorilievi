@@ -7,6 +7,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SimplePie;
 
+/**
+ * Class FeedController
+ * @package App\Controller
+ */
 class FeedController extends Controller
 {
     /**
@@ -63,6 +67,7 @@ class FeedController extends Controller
                     $entityManager->flush();
 
                 }
+
             endforeach;
 
         endif;
