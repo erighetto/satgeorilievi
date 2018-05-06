@@ -23,7 +23,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-        {{ navigation|raw }}
+        {{ navigation.main|raw }}
         </div>
     </nav>
     <!-- BEGIN BANNER -->
@@ -59,16 +59,16 @@
             <div id="news">
                 <h2>In evidenza</h2>
                 <ul>
-                    <li><a href="rilievi-topografici.php" title="Rilievi topografici"><span class="title">Rilievi topografici</span><span
+                    <li><a href="{{ path('rilievi_topografici') }}" title="Rilievi topografici"><span class="title">Rilievi topografici</span><span
                                     class="author">Rilevazioni topografiche con sistema GPS, Rilevazioni celerimetriche</span></span>
                         </a></li>
-                    <li><a href="rilievi-laser-scanner-3d.php" title="Rilievi laser scanner 3d"><span class="title">Rilievi laser scanner 3d</span><span
+                    <li><a href="{{ path('rilievi_laser_scanner_3d') }}" title="Rilievi laser scanner 3d"><span class="title">Rilievi laser scanner 3d</span><span
                                     class="author">Scansioni laser con Leica ScanStation C10 per modelli 3D</span></span>
                         </a></li>
-                    <li><a href="servizi.php" title="Attivit&agrave; dello studio"><span class="title">Attivit&agrave;
+                    <li><a href="{{ path('servizi') }}" title="Attivit&agrave; dello studio"><span class="title">Attivit&agrave;
                                 dello studio</span><span class="author">Piani quotati - Frazionamenti e tracciamenti - Accatastamenti e riconfinazioni - Progettazione edile</span></span>
                         </a></li>
-                    <li><a href="contatti.php" title="Richiedi un preventivo per rilievi Topografici"><span
+                    <li><a href="{{ path('contatti') }}" title="Richiedi un preventivo per rilievi Topografici"><span
                                     class="title">Richiedi un preventivo</span><span class="author">Rilevazioni topografiche con tecnologie avanzate</span></span>
                         </a></li>
                 </ul>
@@ -82,7 +82,7 @@
 <!-- BEGIN FOOTER -->
 <div id="footer" class="container">
     <div class="clearfix">
-        {{ navigation|raw }}
+        {{ navigation.main|raw }}
     <ul class="list-inline">
         <li><a class="nav-link" href="{{ path('news_index') }}" title="Notizie legate al laser scanner 3d Leica ScanStation C10">News</a></li>
         <li><a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" title="Rilevazioni con laserscanner 3D"><img src="{{ asset('build/static/Facebook-Icon.png') }}"  style="padding-top: 4px;" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" /></a></li>

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\News;
 use App\Form\NewsType;
+use Kilte\Pagination\Pagination;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,30 +18,20 @@ class NewsController extends Controller
     /**
      * @Route("/", name="news_index", methods="GET")
      */
-    public function indexAction(): Response
+    public function indexAction(Request $request): Response
     {
-        $news = $this->getDoctrine()
-            ->getRepository(News::class)
-            ->findAll();
+        $repository = $this->getDoctrine()
+            ->getRepository(News::class);
 
-        $sql = "SELECT count(id) FROM items_satgeorilievi WHERE approved=1";
-        $count = $app['db']->fetchColumn($sql);
+        $count = $repository->countAllApproved();
+
+        $page = $request->get('page');
 
         /** @var \Kilte\Pagination\Pagination $pagination */
-        $pagination = $app['pagination']($count, $page);
+        $pagination = new Pagination($count, 0, 30);
         $pages = $pagination->build();
 
-        $queryBuilder = $app['db']->createQueryBuilder();
-
-        $queryBuilder
-            ->select('title', 'posted', 'data', 'link')
-            ->from('items_satgeorilievi')
-            ->where('approved = 1')
-            ->orderBy('id', 'DESC')
-            ->setFirstResult($page)
-            ->setMaxResults($app['pagination.per_page']);
-
-        $news = $queryBuilder->execute()->fetchAll();
+        $news = $repository->paginateNews($page);
 
         if ($page > 1) {
             $queryBuilder = $app['db']->createQueryBuilder();

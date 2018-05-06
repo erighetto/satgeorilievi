@@ -54,11 +54,11 @@ class SitemapSubscriber implements EventSubscriberInterface
     /**
      * @param UrlContainerInterface $urls
      */
-    public function registerBlogPostsUrls(UrlContainerInterface $urls): void
+    public function registerNewsUrls(UrlContainerInterface $urls): void
     {
-        $posts = $this->doctrine->getRepository(News::class)->findAll();
+        $posts = $this->doctrine->getRepository(News::class)->countAllApproved();
 
-        $pagination = new Pagination(count($posts), 1, 30);
+        $pagination = new Pagination(count($posts), 0, 30);
 
         for ($i = 1; $i <= $pagination->totalPages(); $i++) {
 
