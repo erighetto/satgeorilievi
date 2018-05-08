@@ -358,3 +358,21 @@ body {
   background: rgba(0, 0, 0, 0) url("../images/body_bg.jpg") repeat-x scroll center top;
   line-height: 1;
 }
+
+#map_canvas {
+  width: 600px;
+  height: 400px;
+}
+
+#fb-icon {
+  padding-top: 4px;
+}
+
+#gl-icon {
+  padding-top: 6px;
+}
+
+#marker_on_map {
+  width: 400px;
+  height: 75px;
+}

@@ -51,8 +51,8 @@ class PagesController extends Controller
     public function doveSiamoAction()
     {
         return $this->render('pages/dove-siamo.html.twig', [
-            'title' => 'Rilievo gps, rilievo laser scanner, rilievi topografici',
-            'description' => 'Rilievo gps, rilievo laser scanner, rilievo celerimetrico e rilievo topografico per piani quotati, frazionamenti e tracciamenti, accatastamenti e riconfinazioni'
+            'title' => 'Dove Siamo',
+            'description' => 'Studio Associato di Topografia, dove siamo: Vestenanova, Verona, Veneto'
         ]);
     }
 
