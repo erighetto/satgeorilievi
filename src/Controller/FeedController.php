@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\News;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use SimplePie;
 
 /**
@@ -25,7 +27,7 @@ class FeedController extends Controller
 
         // Create a new instance of the SimplePie object
         $feed = new SimplePie();
-        $feed->set_cache_location($this->container->getParameter('kernel.cache_dir')."/feed");
+        $feed->set_cache_location($this->getCachePath());
         //URL del feed da importare
         $urlfeed = "http://feeds.feedburner.com/SatGeorilievi-LaserScanner3d?format=xml";
 
@@ -62,6 +64,7 @@ class FeedController extends Controller
                     $db_record->setTitle($item->get_title());
                     $db_record->setData($this->wordCleanup($item->get_content(), $item->get_title()));
                     $db_record->setApproved(1);
+                    $db_record->setPosted($item->get_date());
 
                     $entityManager->persist($db_record);
                     $entityManager->flush();
@@ -75,9 +78,13 @@ class FeedController extends Controller
         $mtime = explode(' ', microtime());
 
         return $this->render(
-            'feed/update.html.twig', [
-                'message' => 'Page processed in ' . round($mtime[0] + $mtime[1] - $starttime, 3) . ' seconds.'
-        ]);
+            'feed/update.html.twig',
+            [
+                'message' => 'Page processed in '.round($mtime[0] + $mtime[1] - $starttime, 3).' seconds.',
+                'title' => 'Import notizie',
+                'description' => 'Prelevo le notizie dal feed delle notizie di Google',
+            ]
+        );
     }
 
     /**
@@ -87,8 +94,29 @@ class FeedController extends Controller
      */
     private function wordCleanup($content, $title)
     {
-        $str = strip_tags($content,'<img>');
+        $str = strip_tags($content, '<img>');
         $str = str_replace($title, "", $str);
+
         return $str;
+    }
+
+    /**
+     * @return string
+     */
+    private function getCachePath()
+    {
+        $fileSystem = new Filesystem();
+
+        $path = $this->container->getParameter('kernel.cache_dir')."/feed";
+
+        if (!$fileSystem->exists($path)) {
+            try {
+                $fileSystem->mkdir($path);
+            } catch (IOExceptionInterface $exception) {
+                echo "An error occurred while creating your directory at ".$exception->getPath();
+            }
+        }
+
+        return $path;
     }
 }

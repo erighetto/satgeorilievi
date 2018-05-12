@@ -10,7 +10,7 @@ services:
     volumes:
       - "./:/var/www/html:cached"
     environment:
-      WEB_DOCUMENT_ROOT: /var/www/html/public
+      APACHE_DOCUMENT_ROOT: public
 
   pma:
     image: phpmyadmin/phpmyadmin

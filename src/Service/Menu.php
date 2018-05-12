@@ -23,16 +23,16 @@ class Menu
         $menu->addChild('Home', ['uri' => '/', 'attributes' => ['class' => 'nav-item']])
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu->addChild('Chi siamo', ['uri' => 'chi-siamo', 'attributes' => ['class' => 'nav-item']])
+        $menu->addChild('Chi siamo', ['uri' => '/chi-siamo', 'attributes' => ['class' => 'nav-item']])
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu->addChild('Servizi', ['uri' => 'servizi', 'attributes' => ['class' => 'nav-item']])
+        $menu->addChild('Servizi', ['uri' => '/servizi', 'attributes' => ['class' => 'nav-item']])
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu->addChild('Dove siamo', ['uri' => 'dove-siamo', 'attributes' => ['class' => 'nav-item']])
+        $menu->addChild('Dove siamo', ['uri' => '/dove-siamo', 'attributes' => ['class' => 'nav-item']])
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu->addChild('Contatti', ['uri' => 'contatti', 'attributes' => ['class' => 'nav-item']])
+        $menu->addChild('Contatti', ['uri' => '/contatti', 'attributes' => ['class' => 'nav-item']])
             ->setLinkAttribute('class', 'nav-link');
 
         $renderer = new ListRenderer(new \Knp\Menu\Matcher\Matcher());
