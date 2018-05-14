@@ -81,17 +81,25 @@
 
 <!-- BEGIN FOOTER -->
 <div id="footer" class="container">
-    <div class="clearfix">
-        {{ navigation.main|raw }}
-    <ul class="list-inline">
-        <li class="list-inline-item"><a class="nav-link" href="{{ path('news_index') }}" title="Notizie legate al laser scanner 3d Leica ScanStation C10">News</a></li>
-        <li class="list-inline-item"><a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" title="Rilevazioni con laserscanner 3D"><img src="{{ asset('build/static/Facebook-Icon.png') }}"  id="fb-icon" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" /></a></li>
-        <li class="list-inline-item"><a class="nav-link" href="https://plus.google.com/u/0/b/113648535618383673909/" title="rilievo con laserscanner"><img src="{{ asset('build/static/googleplus.png') }}" id="gl-icon" alt="Rilievo laserscanner 3D" title="Rilievo laserscanner 3D" /></a></li>
-    </ul>
+
+    <div class="row justify-content-sm-center">
+        <div class="col col-sm-auto">
+            {{ navigation.main|raw }}
+        </div>
+        <div class="col col-sm">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a class="nav-link" href="{{ path('news_index') }}" title="Notizie legate al laser scanner 3d Leica ScanStation C10">News</a></li>
+                <li class="list-inline-item"><a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" title="Rilevazioni con laserscanner 3D"><img src="{{ asset('build/static/Facebook-Icon.png') }}"  id="fb-icon" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" /></a></li>
+                <li class="list-inline-item"><a class="nav-link" href="https://plus.google.com/u/0/b/113648535618383673909/" title="rilievo con laserscanner"><img src="{{ asset('build/static/googleplus.png') }}" id="gl-icon" alt="Rilievo laserscanner 3D" title="Rilievo laserscanner 3D" /></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="clearfix">
-        <p>&copy; {{ "now"|date("Y") }} S.A.T. - Studio Associato di Topografia. All rights reserved. <span class="hosting">Provided by <a href="http://www.emanuelrighetto.it" title="Creazione Siti Internet Verona">Creazione Siti Internet Verona</a></span></p>
+    <div class="row">
+        <div class="col col-sm">
+            <p>&copy; {{ "now"|date("Y") }} S.A.T. - Studio Associato di Topografia. All rights reserved. <span class="hosting">Provided by <a href="http://www.emanuelrighetto.it" title="Creazione Siti Internet Verona">Creazione Siti Internet Verona</a></span></p>
+        </div>
     </div>
+
 </div>
 <!-- END FOOTER -->
 
