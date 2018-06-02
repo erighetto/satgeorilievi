@@ -55,7 +55,7 @@ class FeedController extends Controller
                 $repository = $this->getDoctrine()->getRepository(News::class);
                 $stored = $repository->findOneBy(['link' => $item->get_permalink()]);
 
-                if (!$stored) {
+                if (!$stored && $item->get_title() !== "This RSS feed URL is deprecated") {
 
                     $entityManager = $this->getDoctrine()->getManager();
 

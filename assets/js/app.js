@@ -82,13 +82,14 @@ $(document).ready(function () {
 
     $(".show-feature").hide();
 
-    $(".feature").hover(function (e) {
+    $(".feature").hover(function () {
             var children = $(this).children(".show-feature");
-
             if (children.is(":hidden")) {
+                var posTop = $(this).offset().top;
+                var posLeft = $(this).offset().left;
                 children
-                    .css("top", (e.pageY - 200) + "px")
-                    .css("left", (e.pageX + 10) + "px")
+                    .css("top", (posTop / 6) + "px")
+                    .css("left", (posLeft / 2) + "px")
                     .css('display', 'block');
             }
         },
