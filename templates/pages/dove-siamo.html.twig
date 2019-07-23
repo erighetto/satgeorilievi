@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block head_scripts %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+{% endblock %}
+
 {% block body %}
     <h2>Dove Siamo</h2>
 
@@ -7,46 +14,29 @@
 {% endblock %}
 
 {% block footer_scripts %}
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    {{ parent() }}
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+            crossorigin=""></script>
     <script type="text/javascript">
-        var vestenanova = new google.maps.LatLng(45.574999, 11.226375);
-        var sede = new google.maps.LatLng(45.574999, 11.226375);
-        var marker;
-        var map;
-        var infowindow = new google.maps.InfoWindow(
-            { content: '<div style="width:400px;height:75px;"><h2>S.A.T. - Studio Associato di Topografia</h2> <p>Via Chiesa 51 - 37030 - Vestenanova (VR)</p>',
-            });
 
-        function initialize() {
-            var mapOptions = {
-                zoom: 11,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                center: vestenanova
-            };
+        var pin = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png'
+        });
 
-            map = new google.maps.Map(document.getElementById("map_canvas"),
-                mapOptions);
+        var infowindow = '<h2>S.A.T. - Studio Associato di Topografia</h2> <p>Via Chiesa 51 - 37030 - Vestenanova (VR)</p>';
+        var latitude_pin = "45.574961";
+        var longitude_pin = "11.226351";
 
-            marker = new google.maps.Marker({
-                map:map,
-                draggable:true,
-                animation: google.maps.Animation.DROP,
-                position: sede,
-                title: "SAT - Studio Associato Topografia"
-            });
-            google.maps.event.addListener(marker, 'click', toggleBounce);
-        }
+        var map = L.map('map_canvas', {scrollWheelZoom: false}).setView([latitude_pin, longitude_pin], 12);
 
-        function toggleBounce() {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            if (marker.getAnimation() != null) {
-                marker.setAnimation(null);
-            } else {
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-                infowindow.open(map,marker);
-            }
-        }
+        L.marker([latitude_pin, longitude_pin], {icon: pin})
+            .addTo(map)
+            .bindPopup(infowindow).openPopup();
 
-        initialize();
     </script>
 {% endblock %}
