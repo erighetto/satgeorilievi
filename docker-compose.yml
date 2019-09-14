@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
 
   symfony-webapp:
@@ -8,11 +8,20 @@ services:
     links:
       - pma
     volumes:
-      - "./:/var/www/html:cached"
+      - "./backend:/var/www/html:cached"
     environment:
       WEB_DOCUMENT_ROOT: "/var/www/html/public"
       PHP_IDE_CONFIG: "serverName=localhost"
       POSTFIX_RELAYHOST: "mailhog:1025"
+
+  vue-webapp:
+    image: node
+    ports:
+      - "8081:8081"
+    working_dir: /home/node/app
+    volumes:
+      - "./frontend:/home/node/app"
+    command: sh -c 'yarn run serve'
 
   pma:
     image: phpmyadmin/phpmyadmin
@@ -28,9 +37,9 @@ services:
   mysql-server:
     image: mariadb:latest
     environment:
-     MYSQL_ROOT_PASSWORD:  root
-     MYSQL_DATABASE: satgeorilievi
-     MYSQL_USER: silex_usr
-     MYSQL_PASSWORD: silex_pwd
+      MYSQL_ROOT_PASSWORD:  root
+      MYSQL_DATABASE: satgeorilievi
+      MYSQL_USER: silex_usr
+      MYSQL_PASSWORD: silex_pwd
     ports:
       - "3306:3306"
