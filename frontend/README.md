@@ -1,4 +1,4 @@
-# sat-test
+# satgeorilievi-frontend
 
 ## Project setup
 ```
