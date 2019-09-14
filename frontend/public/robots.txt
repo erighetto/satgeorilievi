@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /temp/
+Disallow: /cgi-bin/
+Disallow: /includes/
+Disallow: /simplepie/
+Allow: /
+
+
+Sitemap: http://www.satgeorilievi.com/sitemap.xml
+

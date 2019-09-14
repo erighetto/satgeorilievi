@@ -1,0 +1,120 @@
+// App.vue
+<template>
+  <div id="app">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <router-link
+                :to="{name: 'home'}"
+                v-slot="{ href, route, navigate }"
+        >
+            <a :href="href" :title="name" class="navbar-brand">SAT</a>
+        </router-link>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <router-link :to="{name: 'home'}">Home</router-link>
+          <router-link :to="{name: 'who_we_are'}">Chi Siamo</router-link>
+          <router-link :to="{name: 'services'}">Servizi</router-link>
+          <router-link :to="{name: 'where_we_are'}">Dove Siamo</router-link>
+          <router-link :to="{name: 'who_we_are'}">Contatti</router-link>
+        </div>
+      </nav>
+      <!-- BEGIN BANNER -->
+      <div id="banner">
+        <div id="quote">
+          <h1>Studio Associato di Topografia</h1>
+          <h2>di Salgaro geom. Adriano & Gonzato geom. Luigi</h2>
+        </div>
+        <div id="headline">
+          <h3>rilievo topografico con gps, rilievo celerimetrico, rilievo di poligonali, rilievo laser scanner 3D, frazionamento, inserimento in mappa, riconfinazione, tracciamento, piano quotato</h3>
+        </div>
+      </div>
+      <!-- END BANNER -->
+    </div>
+
+    <b-container id="content" class="container">
+      <b-row>
+        <b-col id="left_col" class="col-md-8"><router-view /></b-col>
+        <b-col id="right_col" class="col-md-4">
+          <h2>Cerca nel sito</h2>
+
+          <div id="search">
+
+          </div>
+
+          <div id="news">
+            <h2>In evidenza</h2>
+            <ul class="list-unstyled">
+              <li>
+                <router-link :to="{name: 'services'}" title="Attivit&agrave; dello studio">
+                  <span class="title">Attivit&agrave; dello studio</span>
+                  <span class="author">Piani quotati - Frazionamenti e tracciamenti - Accatastamenti e riconfinazioni - Progettazione edile</span>
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="{name: 'contacts'}" title="Richiedi un preventivo per rilievi Topografici">
+                  <span class="title">Richiedi un preventivo</span>
+                  <span class="author">Rilevazioni topografiche con tecnologie avanzate</span>
+                </router-link>
+              </li>
+            </ul>
+
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <!-- BEGIN FOOTER -->
+      <b-container id="footer" class="container">
+        <b-row class="justify-content-sm-center">
+          <b-col class="col-sm-auto">
+            <router-link :to="{name: 'home'}">Home</router-link>
+            <router-link :to="{name: 'who_we_are'}">Chi Siamo</router-link>
+            <router-link :to="{name: 'services'}">Servizi</router-link>
+            <router-link :to="{name: 'where_we_are'}">Dove Siamo</router-link>
+            <router-link :to="{name: 'who_we_are'}">Contatti</router-link>
+          </b-col>
+          <b-col class="col-sm-auto">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <router-link :to="{name: 'news'}" title="Notizie legate al laser scanner 3d Leica ScanStation C10" class="nav-link">News</router-link>
+              </li>
+              <li class="list-inline-item">
+                <a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" title="Rilevazioni con laserscanner 3D">
+                  <img :src="images.fb_footer"  id="fb-icon" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" />
+                </a>
+              </li>
+            </ul>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="col-sm">
+            <p>&copy; {{ new Date().getFullYear() }} S.A.T. - Studio Associato di Topografia. All rights reserved. <span class="hosting">Provided by <a href="http://www.emanuelrighetto.it" title="Creazione Siti Internet Verona">Creazione Siti Internet Verona</a></span></p>
+          </b-col>
+        </b-row>
+      </b-container>
+    <!-- END FOOTER -->
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        images: {
+          fb_footer: require('./assets/Facebook-Icon.png')
+        }
+      }
+    },
+    computed: {
+      title: function () {
+        return this.$route.meta.title
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+  @import "styles/custom.scss";
+</style>
