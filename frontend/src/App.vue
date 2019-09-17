@@ -1,7 +1,7 @@
 // App.vue
 <template>
   <div id="app">
-    <div class="container">
+    <b-container id="header">
       <nav class="navbar navbar-expand-lg navbar-light">
         <router-link
                 :to="{name: 'home'}"
@@ -22,20 +22,33 @@
       </nav>
       <!-- BEGIN BANNER -->
       <div id="banner">
-        <div id="quote">
-          <h1>Studio Associato di Topografia</h1>
-          <h2>di Salgaro geom. Adriano & Gonzato geom. Luigi</h2>
-        </div>
-        <div id="headline">
-          <h3>rilievo topografico con gps, rilievo celerimetrico, rilievo di poligonali, rilievo laser scanner 3D, frazionamento, inserimento in mappa, riconfinazione, tracciamento, piano quotato</h3>
-        </div>
+        <b-row>
+          <b-col cols="4">
+            <img src="~./assets/logo.jpg">
+          </b-col>
+          <b-col cols="8">
+            <div id="quote" class="d-flex align-items-center">
+              <h1>Studio Associato di Topografia</h1>
+              <h2>di Salgaro geom. Adriano & Gonzato geom. Luigi</h2>
+            </div>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <div id="headline">
+              <h3>rilievo topografico con gps, rilievo celerimetrico, rilievo di poligonali, rilievo laser scanner 3D, frazionamento, inserimento in mappa, riconfinazione, tracciamento, piano quotato</h3>
+            </div>
+          </b-col>
+        </b-row>
       </div>
       <!-- END BANNER -->
-    </div>
+    </b-container>
 
-    <b-container id="content" class="container">
+    <b-container id="content">
       <b-row>
-        <b-col id="left_col" class="col-md-8"><router-view /></b-col>
+        <b-col id="left_col" class="col-md-8">
+          <router-view />
+        </b-col>
         <b-col id="right_col" class="col-md-4">
           <h2>Cerca nel sito</h2>
 
@@ -66,7 +79,7 @@
     </b-container>
 
     <!-- BEGIN FOOTER -->
-      <b-container id="footer" class="container">
+      <b-container id="footer">
         <b-row class="justify-content-sm-center">
           <b-col class="col-sm-auto">
             <router-link :to="{name: 'home'}">Home</router-link>
@@ -116,5 +129,7 @@
 </script>
 
 <style lang="scss">
+  @import 'node_modules/bootstrap/scss/bootstrap';
+  @import 'node_modules/bootstrap-vue/src/index.scss';
   @import "styles/custom.scss";
 </style>
