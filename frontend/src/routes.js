@@ -3,7 +3,7 @@
 import Home from './components/Home.vue';
 import WhoWeAre from './components/WhoWeAre.vue';
 import Services from './components/Services.vue';
-import ServiceDetails from './components/ServiceDatails.vue';
+import ServiceDetails from './components/ServiceDetails.vue';
 import LaserScannerSurveys from './components/LaserScannerSurveys.vue';
 import News from './components/News.vue'
 import WhereWeAre from './components/WhereWeAre.vue'
@@ -22,11 +22,11 @@ const routes = [
     },
     {path: '/chi-siamo', component: WhoWeAre, name: 'who_we_are'},
     {path: '/servizi', component: Services, name: 'services'},
-    {path: '/servizi/:id', component: ServiceDetails, name: 'service_details'},
+    {path: '/servizi/:id', component: ServiceDetails, name: 'service_details', props: true},
     {path: '/rilievi-laser-scanner-3d', component: LaserScannerSurveys, name: 'laser_scanner_surveys'},
     {path: '/dove-siamo', component: WhereWeAre, name: 'where_we_are'},
     {path: '/contatti', components: Contacts, name: 'contacts'},
-    {path: '/laser-scanner-3d-news/:id', component: News, name: 'news'}
+    {path: '/laser-scanner-3d-news/:id', component: News, name: 'news', props: true}
 ];
 
 export default routes;

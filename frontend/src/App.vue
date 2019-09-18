@@ -3,28 +3,37 @@
   <div id="app">
     <b-container id="header">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <router-link
-                :to="{name: 'home'}"
-                v-slot="{ href, route, navigate }"
-        >
+        <router-link :to="{name: 'home'}" v-slot="{ href, route, navigate }">
             <a :href="href" :title="name" class="navbar-brand">SAT</a>
         </router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <router-link :to="{name: 'home'}">Home</router-link>
-          <router-link :to="{name: 'who_we_are'}">Chi Siamo</router-link>
-          <router-link :to="{name: 'services'}">Servizi</router-link>
-          <router-link :to="{name: 'where_we_are'}">Dove Siamo</router-link>
-          <router-link :to="{name: 'who_we_are'}">Contatti</router-link>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" :to="{name: 'home'}">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" :to="{name: 'who_we_are'}">Chi Siamo</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" :to="{name: 'services'}">Servizi</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" :to="{name: 'where_we_are'}">Dove Siamo</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" :to="{name: 'contacts'}">Contatti</router-link>
+            </li>
+          </ul>
         </div>
       </nav>
       <!-- BEGIN BANNER -->
       <div id="banner">
         <b-row>
           <b-col cols="4">
-            <img src="~./assets/logo.jpg">
+            <img src="~./assets/logo.jpg" alt="SAT georilievi">
           </b-col>
           <b-col cols="8">
             <div id="quote" class="d-flex align-items-center">
@@ -47,7 +56,7 @@
     <b-container id="content">
       <b-row>
         <b-col id="left_col" class="col-md-8">
-          <router-view />
+          <router-view></router-view>
         </b-col>
         <b-col id="right_col" class="col-md-4">
           <h2>Cerca nel sito</h2>
@@ -59,6 +68,12 @@
           <div id="news">
             <h2>In evidenza</h2>
             <ul class="list-unstyled">
+              <li>
+                <router-link :to="{name: 'laser_scanner_surveys'}"title="Rilievi laser scanner 3d">
+                  <span class="title">Rilievi laser scanner 3d</span>
+                  <span class="author">Scansioni laser con Leica ScanStation C10 per modelli 3D</span>
+                </router-link>
+              </li>
               <li>
                 <router-link :to="{name: 'services'}" title="Attivit&agrave; dello studio">
                   <span class="title">Attivit&agrave; dello studio</span>
@@ -82,11 +97,23 @@
       <b-container id="footer">
         <b-row class="justify-content-sm-center">
           <b-col class="col-sm-auto">
-            <router-link :to="{name: 'home'}">Home</router-link>
-            <router-link :to="{name: 'who_we_are'}">Chi Siamo</router-link>
-            <router-link :to="{name: 'services'}">Servizi</router-link>
-            <router-link :to="{name: 'where_we_are'}">Dove Siamo</router-link>
-            <router-link :to="{name: 'who_we_are'}">Contatti</router-link>
+            <ul class="nav">
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{name: 'home'}">Home</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{name: 'who_we_are'}">Chi Siamo</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{name: 'services'}">Servizi</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{name: 'where_we_are'}">Dove Siamo</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{name: 'contacts'}">Contatti</router-link>
+              </li>
+            </ul>
           </b-col>
           <b-col class="col-sm-auto">
             <ul class="list-inline">

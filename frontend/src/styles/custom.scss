@@ -1,7 +1,7 @@
 @import "variables";
 
 body {
-  background: rgba(0, 0, 0, 0) url(~./assets/body_bg.jpg) repeat-x scroll center 20px;
+  background: rgba(0, 0, 0, 0) url(~./assets/body_bg.jpg) repeat-x scroll center 32px;
   line-height: 1;
 }
 
@@ -12,6 +12,30 @@ body {
   .navbar-brand {
     padding-bottom: 0;
     padding-top: 0;
+  }
+}
+
+#navbarNav {
+    .nav-link {
+      @extend %extend_1;
+      &:visited {
+        @extend %extend_1;
+      }
+      &:hover {
+        color: $color_chambray_approx;
+      }
+      &.router-link-active {
+        color: $color_chambray_approx;
+        background: $url_1 no-repeat center -80px;
+      }
+    }
+}
+
+#headline {
+  h3 {
+    font: bold 18px $font_4, $font_5, $font_2;
+    color: $color_azure_approx;
+    padding-top: 26px;
   }
 }
 
