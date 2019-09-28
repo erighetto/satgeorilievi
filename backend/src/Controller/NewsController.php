@@ -5,7 +5,8 @@ namespace App\Controller;
 use App\Entity\News;
 use App\Form\NewsType;
 use Kilte\Pagination\Pagination;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,10 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/news")
  */
-class NewsController extends Controller
+class NewsController extends AbstractController
 {
     /**
      * @Route("/", name="news_index", methods="GET")
+     * @param Request $request
+     * @return Response
      */
     public function indexAction(Request $request): Response
     {
@@ -52,6 +55,8 @@ class NewsController extends Controller
 
     /**
      * @Route("/new", name="news_new", methods="GET|POST")
+     * @param Request $request
+     * @return Response
      */
     public function newAction(Request $request): Response
     {
@@ -75,6 +80,8 @@ class NewsController extends Controller
 
     /**
      * @Route("/{id}", name="news_show", methods="GET")
+     * @param News $news
+     * @return Response
      */
     public function showAction(News $news): Response
     {
@@ -83,6 +90,9 @@ class NewsController extends Controller
 
     /**
      * @Route("/{id}/edit", name="news_edit", methods="GET|POST")
+     * @param Request $request
+     * @param News $news
+     * @return Response
      */
     public function editAction(Request $request, News $news): Response
     {
@@ -103,6 +113,9 @@ class NewsController extends Controller
 
     /**
      * @Route("/{id}", name="news_delete", methods="DELETE")
+     * @param Request $request
+     * @param News $news
+     * @return Response
      */
     public function deleteAction(Request $request, News $news): Response
     {
@@ -113,5 +126,28 @@ class NewsController extends Controller
         }
 
         return $this->redirectToRoute('news_index');
+    }
+
+    /**
+     * @Route("/json", name="news_json", methods="GET")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function jsonAction(Request $request): JsonResponse
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository(News::class);
+
+        $count = $repository->countAllApproved();
+        /** @var \Kilte\Pagination\Pagination $pagination */
+        $pagination = new Pagination($count, 0, 10);
+        $page = $request->get('page');
+        $news = $repository->paginateNews($page);
+
+        return $this->json([
+            'items' => $news,
+            'current_page' => $pagination->currentPage(),
+            'total_pages' => $pagination->totalPages()
+        ]);
     }
 }

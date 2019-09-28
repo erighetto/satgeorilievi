@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\News;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use SimplePie;
@@ -13,8 +13,9 @@ use SimplePie;
  * Class FeedController
  * @package App\Controller
  */
-class FeedController extends Controller
+class FeedController extends AbstractController
 {
+
     /**
      * @Route("/feed/update", name="feed_update")
      */
@@ -107,7 +108,7 @@ class FeedController extends Controller
     {
         $fileSystem = new Filesystem();
 
-        $path = $this->container->getParameter('kernel.cache_dir')."/feed";
+        $path = $this->getParameter('kernel.cache_dir')."/feed";
 
         if (!$fileSystem->exists($path)) {
             try {

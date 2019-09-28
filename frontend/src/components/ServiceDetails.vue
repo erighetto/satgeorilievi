@@ -135,7 +135,6 @@
 
 <script>
     import ServicesMenu from "./ServicesMenu";
-    import json from '../services.json'
 
     export default {
         name: 'ServicesDetail',

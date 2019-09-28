@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ title }} - S.A.T. | Studio Associato di Topografia</title>
-    <meta name="description" content="{{ description }} - S.A.T. | Studio Associato di Topografia">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
     {% block head_scripts %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -16,97 +16,37 @@
 <body>
 
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="{{ path('home') }}"
-           title="{{ title }} - S.A.T. | Studio Associato di Topografia">SAT</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        {{ navigation.main|raw }}
-        </div>
-    </nav>
     <!-- BEGIN BANNER -->
-    <div id="banner">
-        <div id="quote">
+    <header id="header">
+        <div id="headline">
             <h1>Studio Associato di Topografia</h1>
             <h2>di Salgaro geom. Adriano & Gonzato geom. Luigi</h2>
         </div>
-        <div id="headline">
-            <h3>rilievo topografico con gps, rilievo celerimetrico, rilievo di poligonali, rilievo laser scanner 3D, frazionamento, inserimento in mappa, riconfinazione, tracciamento, piano quotato</h3>
-        </div>
-    </div>
-    <!-- END BANNER -->
-</div>
-
-<div id="content" class="container" >
-    <div class="row">
-        <div id="left_col" class="col-md-8">{% block body %}
-            {% endblock body %}</div>
-        <div id="right_col" class="col-md-4">
-            <h2>Cerca nel sito</h2>
-
-            <div id="search">
-                <form action="search.php" method="post">
-                    <fieldset>
-                        <input id="search_input" value="Scrivi qui il testo da cercare" name="whatdoreplace"
-                               type="text"/>
-                        <input id="search_submit" type="submit" value="GO!" name="B1"/>
-                    </fieldset>
-                </form>
-            </div>
-
-            <div id="news">
-                <h2>In evidenza</h2>
-                <ul class="list-unstyled">
-                    <li><a href="{{ path('rilievi_topografici') }}" title="Rilievi topografici"><span class="title">Rilievi topografici</span><span
-                                    class="author">Rilevazioni topografiche con sistema GPS, Rilevazioni celerimetriche</span></span>
-                        </a></li>
-                    <li><a href="{{ path('rilievi_laser_scanner_3d') }}" title="Rilievi laser scanner 3d"><span class="title">Rilievi laser scanner 3d</span><span
-                                    class="author">Scansioni laser con Leica ScanStation C10 per modelli 3D</span></span>
-                        </a></li>
-                    <li><a href="{{ path('servizi') }}" title="Attivit&agrave; dello studio"><span class="title">Attivit&agrave;
-                                dello studio</span><span class="author">Piani quotati - Frazionamenti e tracciamenti - Accatastamenti e riconfinazioni - Progettazione edile</span></span>
-                        </a></li>
-                    <li><a href="{{ path('contatti') }}" title="Richiedi un preventivo per rilievi Topografici"><span
-                                    class="title">Richiedi un preventivo</span><span class="author">Rilevazioni topografiche con tecnologie avanzate</span></span>
-                        </a></li>
-                </ul>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- BEGIN FOOTER -->
-<div id="footer" class="container">
-
-    <div class="row justify-content-sm-center">
-        <div class="col col-sm-auto">
+        <div id="menu">
             {{ navigation.main|raw }}
         </div>
-        <div class="col col-sm">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a class="nav-link" href="{{ path('news_index') }}" title="Notizie legate al laser scanner 3d Leica ScanStation C10">News</a></li>
-                <li class="list-inline-item"><a class="nav-link" href="https://www.facebook.com/pages/SAT-Studio-Associato-di-Topografia/171384416273640" title="Rilevazioni con laserscanner 3D"><img src="{{ asset('build/static/Facebook-Icon.png') }}"  id="fb-icon" alt="Rilevazioni con laserscanner 3D" title="Rilevazioni con laserscanner 3D" /></a></li>
-            </ul>
+    </header>
+    <!-- END BANNER -->
+    <main id="content">
+        <div class="row">
+            <div class="col">
+                {% block body %}
+                {% endblock body %}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col col-sm">
-            <p>&copy; {{ "now"|date("Y") }} S.A.T. - Studio Associato di Topografia. All rights reserved. <span class="hosting">Provided by <a href="http://www.emanuelrighetto.it" title="Creazione Siti Internet Verona">Creazione Siti Internet Verona</a></span></p>
+    </main>
+    <!-- BEGIN FOOTER -->
+    <footer id="footer" class="container">
+        <div class="row">
+            <div class="col">
+                <p>&copy; {{ "now"|date("Y") }} S.A.T. - Studio Associato di Topografia. All rights reserved. <span class="hosting">Provided by <a href="http://www.emanuelrighetto.it" title="Creazione Siti Internet Verona">Creazione Siti Internet Verona</a></span></p>
+            </div>
         </div>
-    </div>
-
+    </footer>
+    <!-- END FOOTER -->
 </div>
-<!-- END FOOTER -->
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!-- Bootstrap core JavaScript ================================================== -->
 {% block footer_scripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

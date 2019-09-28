@@ -4,7 +4,7 @@ services:
   symfony-webapp:
     image: erighetto/drupal-dev:latest
     ports:
-      - "80:80"
+      - "8000:80"
     links:
       - pma
     volumes:

@@ -30,6 +30,8 @@ Encore
     // allow sass/scss files to be processed
     .enableSassLoader()
 
+    .enableSingleRuntimeChunk()
+
     .addPlugin(new CopyWebpackPlugin([
         // copies to {output}/static
         { from: './assets/images', to: 'static' }
