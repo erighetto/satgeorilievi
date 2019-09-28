@@ -1,6 +1,6 @@
 <template>
     <ul id="servizi" class="nav flex-column">
-        <li v-for="item in $options.myJson" class="nav-item">
+        <li v-for="item in $options.myJson" class="nav-item" v-bind:key="item">
             <router-link class="nav-link" :to="{name: 'service_details', params: { id: item.binding_path }}">
                 {{item.menu}}
             </router-link>

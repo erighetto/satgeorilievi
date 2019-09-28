@@ -25,7 +25,7 @@ const routes = [
     {path: '/servizi/:id', component: ServiceDetails, name: 'service_details', props: true},
     {path: '/rilievi-laser-scanner-3d', component: LaserScannerSurveys, name: 'laser_scanner_surveys'},
     {path: '/dove-siamo', component: WhereWeAre, name: 'where_we_are'},
-    {path: '/contatti', components: Contacts, name: 'contacts'},
+    {path: '/contatti', component: Contacts, name: 'contacts'},
     {path: '/laser-scanner-3d-news/:id', component: News, name: 'news', props: true}
 ];
 

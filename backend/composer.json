@@ -12,7 +12,6 @@
     "ext-iconv": "*",
     "amstaffix/pagination": "^1.1",
     "knplabs/knp-menu": "^2.3",
-    "presta/sitemap-bundle": "^1.5",
     "sensio/framework-extra-bundle": "^5.1",
     "simplepie/simplepie": "^1.4",
     "symfony/apache-pack": "^1.0",
