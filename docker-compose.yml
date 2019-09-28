@@ -27,8 +27,8 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: mysql-server
-      PMA_USER: silex_usr
-      PMA_PASSWORD: silex_pwd
+      PMA_USER: satgeorilievi_usr
+      PMA_PASSWORD: satgeorilievi_pwd
       PHP_UPLOAD_MAX_FILESIZE: 1G
       PHP_MAX_INPUT_VARS: 1G
     ports:
@@ -39,7 +39,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD:  root
       MYSQL_DATABASE: satgeorilievi
-      MYSQL_USER: silex_usr
-      MYSQL_PASSWORD: silex_pwd
+      MYSQL_USER: satgeorilievi_usr
+      MYSQL_PASSWORD: satgeorilievi_pwd
     ports:
       - "3306:3306"
