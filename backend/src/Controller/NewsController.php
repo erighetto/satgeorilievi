@@ -6,7 +6,6 @@ use App\Entity\News;
 use App\Form\NewsType;
 use Kilte\Pagination\Pagination;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -128,26 +127,4 @@ class NewsController extends AbstractController
         return $this->redirectToRoute('news_index');
     }
 
-    /**
-     * @Route("/json", name="news_json", methods="GET")
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function jsonAction(Request $request): JsonResponse
-    {
-        $repository = $this->getDoctrine()
-            ->getRepository(News::class);
-
-        $count = $repository->countAllApproved();
-        /** @var \Kilte\Pagination\Pagination $pagination */
-        $pagination = new Pagination($count, 0, 10);
-        $page = $request->get('page');
-        $news = $repository->paginateNews($page);
-
-        return $this->json([
-            'items' => $news,
-            'current_page' => $pagination->currentPage(),
-            'total_pages' => $pagination->totalPages()
-        ]);
-    }
 }

@@ -21,7 +21,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - "./frontend:/home/node/app"
-    command: sh -c 'yarn run serve'
+    command: sh -c 'yarn install && yarn run serve'
 
   pma:
     image: phpmyadmin/phpmyadmin
@@ -37,7 +37,7 @@ services:
   mysql-server:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD:  root
+      MYSQL_ROOT_PASSWORD:  password
       MYSQL_DATABASE: satgeorilievi
       MYSQL_USER: satgeorilievi_usr
       MYSQL_PASSWORD: satgeorilievi_pwd

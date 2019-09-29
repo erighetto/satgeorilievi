@@ -42,7 +42,7 @@ class NewsRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('n')
             ->select('n.title', 'n.posted', 'n.data', 'n.link')
             ->where('n.approved = 1')
-            ->orderBy('n.id', 'DESC')
+            ->orderBy('n.posted', 'DESC')
             ->setFirstResult($page)
             ->setMaxResults(30)
             ->getQuery();
