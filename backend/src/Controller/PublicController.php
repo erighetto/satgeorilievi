@@ -27,13 +27,19 @@ class PublicController extends AbstractController
         $count = $repository->countAllApproved();
         /** @var \Kilte\Pagination\Pagination $pagination */
         $pagination = new Pagination($count, 0, 10);
-        $page = $request->get('page');
-        $news = $repository->paginateNews($page);
+        $currentPage = $request->get('page');
+        $news = $repository->paginateNews($currentPage, 10);
 
-        return $this->json([
-            'items' => $news,
-            'current_page' => $pagination->currentPage(),
-            'total_pages' => $pagination->totalPages()
-        ]);
+        return $this->json(
+            [
+                'items' => $news,
+                'current_page' => $pagination->currentPage(),
+                'total_pages' => $pagination->totalPages(),
+            ],
+            200,
+            [
+                'Access-Control-Allow-Origin' => '*',
+            ]
+        );
     }
 }

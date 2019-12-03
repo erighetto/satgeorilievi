@@ -33,18 +33,19 @@ class NewsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $page
+     * @param $currentPage
+     * @param $perPage
      * @return array
      */
-    public function paginateNews($page): array
+    public function paginateNews($currentPage, $perPage): array
     {
 
         $qb = $this->createQueryBuilder('n')
             ->select('n.title', 'n.posted', 'n.data', 'n.link')
             ->where('n.approved = 1')
             ->orderBy('n.posted', 'DESC')
-            ->setFirstResult($page)
-            ->setMaxResults(30)
+            ->setFirstResult($currentPage)
+            ->setMaxResults($perPage)
             ->getQuery();
 
         return $qb->execute();

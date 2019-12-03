@@ -1,5 +1,5 @@
 {
-  "name": "satgeorilievi-backend",
+  "name": "satgeorilievi/backend",
   "description": "Studio Associato Topografia",
   "authors": [
     {
@@ -82,7 +82,7 @@
   "extra": {
     "symfony": {
       "allow-contrib": false,
-      "require": "4.3.*"
+      "require": "4.4.*"
     }
   }
 }

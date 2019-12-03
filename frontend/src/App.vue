@@ -122,7 +122,7 @@
                 <b-col class="col-sm-auto">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <router-link :to="{name: 'news'}"
+                            <router-link :to="{name: 'news', params: { id: 1 }}"
                                          title="Notizie legate al laser scanner 3d Leica ScanStation C10"
                                          class="nav-link">News
                             </router-link>
