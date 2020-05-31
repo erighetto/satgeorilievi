@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ title }} - S.A.T. | Studio Associato di Topografia</title>
+    <title>{% block title %}{% endblock  %} - S.A.T. | Studio Associato di Topografia</title>
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
     {% block head_scripts %}
         {{ encore_entry_link_tags('app') }}
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col">
                 {% block body %}
-                {% endblock body %}
+                {% endblock %}
             </div>
         </div>
     </main>

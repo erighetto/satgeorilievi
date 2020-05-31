@@ -30,14 +30,15 @@ class NewsController extends AbstractController
         $page = $request->get('page');
 
         /** @var \Kilte\Pagination\Pagination $pagination */
-        $pagination = new Pagination($count, 0, 10);
+        $pagination = new Pagination($count, $page, 10);
         $pages = $pagination->build();
 
-        $news = $repository->paginateNews($page);
+        /** @var News[] $news */
+        $news = $repository->paginateNews($page, 10);
 
         if ($page > 1) {
-            $title = $news[0]['title'];
-            $desc = substr(strip_tags($news[0]['data']), 0, 100);
+            $title = $news[0]->getTitle();
+            $desc = substr(strip_tags($news[0]->getData()), 0, 100);
         } else {
             $title = "Notizie legate al laser scanner 3d Leica ScanStation C10";
             $desc = "SAT Georilievi seleziona le migliori notizie su Laser Scanning 3D";

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ title }}{% endblock %}
+
 {% block body %}
     <h2>Notizie e curiosit&agrave; su<br /> laser scanner 3d Leica ScanStation C10</h2>
 
@@ -9,7 +11,17 @@
                 <h4>{{ row.title }}</h4>
                 <span class="posted">{{ row.posted }}</span>
                 <p>{{ row.data|raw }}</p>
-                <p><a href="{{ row.link|raw }}" rel="nofollow" class="blank">leggi tutto</a></p>
+
+                <ul class="list-group list-group-horizontal-sm">
+                    <li class="list-group-item"><a class="btn btn-primary" href="{{ row.link|raw }}" rel="nofollow" target="_blank">leggi tutto</a></li>
+                    <li class="list-group-item"><a class="btn btn-warning" href="{{ path('news_edit', {'id': row.id}) }}">Modifica</a></li>
+                    <li class="list-group-item"><form method="post" action="{{ path('news_delete', {'id': row.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ row.id) }}">
+                            <button class="btn btn-danger">Elimina</button>
+                        </form></li>
+                </ul>
+
             </li>
         {% endfor %}
     </ul>

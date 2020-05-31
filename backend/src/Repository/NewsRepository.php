@@ -4,18 +4,19 @@ namespace App\Repository;
 
 use App\Entity\News;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class NewsRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, News::class);
     }
 
     /**
      * @return int
+     * @throws \Doctrine\ORM\NoResultException
      */
     public function countAllApproved(): int
     {
@@ -41,7 +42,7 @@ class NewsRepository extends ServiceEntityRepository
     {
 
         $qb = $this->createQueryBuilder('n')
-            ->select('n.title', 'n.posted', 'n.data', 'n.link')
+            ->select('n')
             ->where('n.approved = 1')
             ->orderBy('n.posted', 'DESC')
             ->setFirstResult($currentPage)
