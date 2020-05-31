@@ -21,7 +21,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - "./frontend:/home/node/app"
-    command: sh -c 'yarn install && yarn run serve'
+    command: sh -c 'tail -f /dev/null'
 
   pma:
     image: phpmyadmin/phpmyadmin
